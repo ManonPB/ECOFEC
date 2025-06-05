@@ -11,6 +11,7 @@ def parse_args():
     parser.add_argument("--h_freq", type=float, default=80.0, help="High frequency cutoff for filtering")
     parser.add_argument("--notch_freq", type=float, default=50.0, help="Notch filter frequency")
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing cleaned files")
+    parser.add_argument("--plot", action="store_true", help="Plot cleaned signals after preprocessing")
     return parser.parse_args()
 
 def main():

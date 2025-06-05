@@ -45,6 +45,6 @@ def clean_edf(input_file, output_file, channels_of_interest=None, l_freq=1.5, h_
 
 from mne.export import export_raw
 
-def clean_and_save_edf(edf_path, output_path, channels_of_interest=None, l_freq=1.5, h_freq=80, notch_freq=50):
+def clean_and_save_edf(edf_path, output_path, channels_of_interest=None, l_freq=1.5, h_freq=80, notch_freq=50, plot=False):
     raw_clean = preprocess_eeg_edf(edf_path, channels_of_interest, l_freq, h_freq, notch_freq)
     raw_clean.export(output_path, fmt='edf')
