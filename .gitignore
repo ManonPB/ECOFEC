@@ -1,0 +1,15 @@
+# Ignore raw and cleaned EEG data folders
+data/raw/
+data/cleaned/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore VS Code workspace settings
+.vscode/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
