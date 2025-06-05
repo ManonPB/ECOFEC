@@ -12,6 +12,18 @@ def preprocess_eeg_edf(edf_path, channels_of_interest=None, l_freq=1.5, h_freq=8
     # Load raw EDF data
     raw = mne.io.read_raw_edf(edf_path, preload=True)
 
+    # Définir les canaux d’intérêt
+    channels_of_interest = [
+        'Fp1', 'Fp2', 'F7', 'F3', 'Fz', 'F4', 'F8',
+        'T3', 'C3', 'Cz', 'C4', 'T4',
+        'T5', 'P3', 'Pz', 'P4', 'T6',
+        'O1', 'O2'
+    ]
+
+    # Garde uniquement les canaux présents dans le fichier
+    available_channels = [ch for ch in channels_of_interest if ch in raw.ch_names]
+    raw.pick_channels(available_channels)
+
     # Select channels if specified
     if channels_of_interest is not None:
         raw.pick_channels(channels_of_interest)
