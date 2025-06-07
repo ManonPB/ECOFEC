@@ -99,20 +99,23 @@ Following these guidelines helps ensure compliance with data protection regulati
 
 ## Repository structure 
 
-ECOFEC/
-│
-├── data/
-│   ├── raw/            # Raw EEG EDF files (local only, gitignored)
-│   └── cleaned/        # Preprocessed EEG files (local only, gitignored)
-│
-├── preprocessing/
-│   └── edf_cleaning.py # Core EEG preprocessing functions
-│
-├── scripts/
-│   └── preprocess_edf.py # CLI script to run preprocessing
-│
+ECOFEC
+├── .venv
+├── data
+│   ├── cleaned
+│   ├── config
+│   ├── raw
+│       ├── csv_file
+│       ├── edf_file
+├── preprocessing
+│   ├── __pycache__
+│   ├── __init__.py
+│   ├── edf_cleaning.py
+├── scripts
+│   ├── preprocess_edf.py
+├── venv
 ├── .gitignore
+├── README.md
 ├── requirements.txt
-└── README.md
 
 Created by Manon Boyer - ECOFEC Project
