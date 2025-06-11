@@ -89,7 +89,7 @@ Once preprocessing is done, you can use select_IEDs.py to select IED events for 
 
 Example usage:
 ```bash
-python scripts/select_IEDs.py --periode matin --n_total 150
+python scripts/select_IEDs.py --periode Sommeil --n_total 50
 ```
 
 Arguments:
