@@ -39,6 +39,10 @@ numpy
 
 argparse
 
+pandas
+
+matplotlib
+
 You may use a virtual environment to avoid dependency conflicts:
 
 ```bash
@@ -49,7 +53,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Preprocessing EEG EDF files
+1. Preprocessing EEG EDF files
 The preprocessing script supports processing single EDF files or batches in a directory.
 
 Basic example: process all EDF files in data/raw/ and save cleaned files in data/cleaned/:
@@ -80,6 +84,24 @@ input_path: Path to EDF file or directory of EDF files
 
 --overwrite: Overwrite existing cleaned files (optional)
 
+2. Select events based on IED ratios
+Once preprocessing is done, you can use select_IEDs.py to select IED events for further analysis based on event metadata and target ratio constraints.
+
+Example usage:
+```bash
+python scripts/select_IEDs.py --periode matin --n_total 150
+```
+
+Arguments:
+
+--periode: Period to analyze (e.g., matin, nuit, etc.)
+
+--n_total: Total number of IEDs to select across all electrodes
+
+Optional config and metadata paths can be provided if needed.
+
+This ensures balanced selection across electrodes based on pre-defined IED distributions.
+
 ## Data Privacy and Security
 
 This project processes sensitive EEG data related to pediatric epilepsy.
@@ -99,23 +121,25 @@ Following these guidelines helps ensure compliance with data protection regulati
 
 ## Repository structure 
 
-ECOFEC
-├── .venv
-├── data
-│   ├── cleaned
-│   ├── config
-│   ├── raw
-│       ├── csv_file
-│       ├── edf_file
-├── preprocessing
-│   ├── __pycache__
+ECOFEC/
+├── data/                          # Répertoire de données (non versionné)
+│   ├── raw/                      # Données brutes (EDF, CSV, etc.)
+│   │   ├── edf_file/            # Fichiers EEG bruts
+│   │   ├── csv_file/            # Métadonnées ou annotations liées aux IEDs
+│   ├── cleaned/                 # Données EEG nettoyées (après preprocessing)
+│   ├── config/                  # Fichiers de configuration, dictionnaires, etc.
+│
+├── preprocessing/               # Fonctions de traitement EEG (modules Python)
 │   ├── __init__.py
-│   ├── edf_cleaning.py
-├── scripts
-│   ├── preprocess_edf.py
-├── venv
-├── .gitignore
-├── README.md
-├── requirements.txt
+│   ├── edf_cleaning.py         # Fonctions de nettoyage EEG (filtres, sélection canaux, etc.)
+│
+├── scripts/                     # Scripts exécutables principaux
+│   ├── preprocess_edf.py       # Script de prétraitement EDF
+│   ├── select_IEDs.py          # Script de sélection d'évènements (IEDs) par période et par électrode
+│
+├── .gitignore                   # Fichiers/dossiers exclus du suivi Git
+├── requirements.txt             # Dépendances Python nécessaires
+├── README.md                    # Documentation principale du projet
+
 
 Created by Manon Boyer - ECOFEC Project
