@@ -53,7 +53,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Preprocessing EEG EDF files
+**1. Preprocessing EEG EDF files**
 The preprocessing script supports processing single EDF files or batches in a directory.
 
 Basic example: process all EDF files in data/raw/ and save cleaned files in data/cleaned/:
@@ -84,7 +84,7 @@ input_path: Path to EDF file or directory of EDF files
 
 --overwrite: Overwrite existing cleaned files (optional)
 
-2. Select events based on IED ratios
+**2. Select events based on IED ratios**
 Once preprocessing is done, you can use select_IEDs.py to select IED events for further analysis based on event metadata and target ratio constraints.
 
 Example usage:
@@ -94,7 +94,7 @@ python scripts/select_IEDs.py --periode Sommeil --n_total 50
 
 Arguments:
 
---periode: Period to analyze (e.g., matin, nuit, etc.)
+--periode: Period to analyze (e.g., Eveil, Sommeil, etc.)
 
 --n_total: Total number of IEDs to select across all electrodes
 
