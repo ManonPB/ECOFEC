@@ -2,6 +2,7 @@
 data/raw/
 data/cleaned/
 data/config/
+data/IED_selection
 
 # Ignore Python cache files
 __pycache__/
