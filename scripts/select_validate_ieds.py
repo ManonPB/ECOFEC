@@ -10,13 +10,13 @@ import matplotlib.pyplot as plt
 
 
 # Charger le fichier de configuration YAML
-with open('C:/Users/boyer/github/ECOFEC/data/config/d3bd_ied_selection.yaml', 'r') as f:
+with open('C:/Users/boyer/github/ECOFEC/data/config/d3bd_f29d_ied_selection.yaml', 'r') as f:
     config = yaml.safe_load(f)
 
 # Lire les chemins des fichiers depuis la configuration
 csv_file = config['csv_file']
 edf_file = config['edf_file']
-text_file_path = config['text_file_path']
+#text_file_path = config['text_file_path']
 
 # Charger le fichier CSV
 df_csv = pd.read_csv(csv_file)
@@ -226,8 +226,8 @@ def sauvegarder_evenements_mat(event_times, electrodes, mat_file_path):
     savemat(mat_file_path, events)
 
 # Exemple d'utilisation après validation des événements
-mat_filename_base = "evenements_valides.mat"  
-txt_filename_base = "evenements_valides_avec_ratios.txt"
+mat_filename_base = "d3bd_f29d_evenements_valides.mat"  
+txt_filename_base = "d3bd_f29d_evenements_valides_avec_ratios.txt"
 
 # Sauvegarder les événements validés dans les fichiers avec les ratios pour "Eveil" et "Sommeil"
 enregistrer_evenements(validated_events, config, mat_filename_base, txt_filename_base, ratios_par_periode)
