@@ -98,7 +98,8 @@ This ensures balanced selection across electrodes based on pre-defined IED distr
 
 This script performs an analysis of interictal epileptiform discharges (IEDs) based on temporal periods (wakefulness, sleep, etc.) and electrode locations. It uses a .yaml configuration file to automate and standardize the analysis workflow.
 
-Features:
+**Features:**
+
 Loads a CSV file containing IED event data.
 
 Removes specified irrelevant columns.
@@ -107,7 +108,7 @@ Converts timestamps (Tmu) from microseconds to seconds.
 
 Assigns a brain state (WAKEFULNESS, SLEEP, DROWSINESS, or REJECTED) to each event based on the time intervals defined in the config file.
 
-Event counting and visualization:
+**Event counting and visualization:**
 
 Raw counts of events per electrode for each state.
 
@@ -119,7 +120,8 @@ Normalized ratio plot (wake/sleep) to highlight differences in activity.
 
 Bar chart of normalized frequencies of events per electrode (adjusted for the duration of each period).
 
-Output:
+**Output:**
+
 All generated figures are automatically saved in the directory specified by save_folder. These include:
 
 repartition_eveil.png – Pie chart of events during wakefulness.

@@ -16,10 +16,10 @@ Each time you use this script, make sure to update the `.yaml` configuration fil
 """
 
 # Charger le fichier de configuration YAML
-with open('C:/Users/boyer/github/ECOFEC/data/config/d3bd_7dcf_event_analysis.yaml', 'r') as f:
+with open('C:/Users/boyer/github/ECOFEC/data/config/d3bd_f29d_event_analysis.yaml', 'r') as f:
     config = yaml.safe_load(f)
 
-yaml_filename_prefix = os.path.splitext(os.path.basename('C:/Users/boyer/github/ECOFEC/data/config/d3bd_7dcf_event_analysis.yaml'))[0][:9]
+yaml_filename_prefix = os.path.splitext(os.path.basename('C:/Users/boyer/github/ECOFEC/data/config/d3bd_f29d_event_analysis.yaml'))[0][:9]
 
 # Définir les chemins
 save_folder = config['save_folder']
