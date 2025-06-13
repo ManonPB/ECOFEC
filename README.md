@@ -11,7 +11,10 @@ This repository contains scripts and tools for preprocessing and analyzing EEG d
 
 - [Project Description](#project-description)  
 - [Installation](#installation)  
-- [Usage](#usage)  
+- [Usage](#usage) 
+    - [1. Preprocessing EEG EDF files] (#preprocess_edf)
+    - [2. Select events based on IED ratios] (#select_validate_ieds)
+    - [3. IED Event Analysis by Period and Electrode] (#ied_event_analysis)
 - [Data Privacy and Security](#data-privacy-and-security)  
 - [Repository Structure](#repository-structure)  
 
@@ -31,18 +34,6 @@ This project requires Python 3.8+ and several scientific libraries. You can inst
 pip install -r requirements.txt
 ```
 
-Dependencies include:
-
-mne
-
-numpy
-
-argparse
-
-pandas
-
-matplotlib
-
 You may use a virtual environment to avoid dependency conflicts:
 
 ```bash
@@ -53,7 +44,8 @@ pip install -r requirements.txt
 
 ## Usage
 
-**1. Preprocessing EEG EDF files**
+### 1. Preprocessing EEG EDF files
+
 The preprocessing script supports processing single EDF files or batches in a directory.
 
 Basic example: process all EDF files in data/raw/ and save cleaned files in data/cleaned/:
@@ -84,12 +76,12 @@ input_path: Path to EDF file or directory of EDF files
 
 --overwrite: Overwrite existing cleaned files (optional)
 
-**2. Select events based on IED ratios**
+### 2. Select events based on IED ratios
 Once preprocessing is done, you can use select_IEDs.py to select IED events for further analysis based on event metadata and target ratio constraints.
 
 Example usage:
 ```bash
-python scripts/select_IEDs.py --periode Sommeil --n_total 50
+python scripts/select_validate_ieds.py
 ```
 
 Arguments:
@@ -101,6 +93,45 @@ Arguments:
 Optional config and metadata paths can be provided if needed.
 
 This ensures balanced selection across electrodes based on pre-defined IED distributions.
+
+### 3. IED Event Analysis by Period and Electrode
+
+This script performs an analysis of interictal epileptiform discharges (IEDs) based on temporal periods (wakefulness, sleep, etc.) and electrode locations. It uses a .yaml configuration file to automate and standardize the analysis workflow.
+
+Features:
+Loads a CSV file containing IED event data.
+
+Removes specified irrelevant columns.
+
+Converts timestamps (Tmu) from microseconds to seconds.
+
+Assigns a brain state (WAKEFULNESS, SLEEP, DROWSINESS, or REJECTED) to each event based on the time intervals defined in the config file.
+
+Event counting and visualization:
+
+Raw counts of events per electrode for each state.
+
+Pie charts showing the distribution of IEDs by electrode for each state.
+
+Bar plot comparing raw event counts by electrode and state.
+
+Normalized ratio plot (wake/sleep) to highlight differences in activity.
+
+Bar chart of normalized frequencies of events per electrode (adjusted for the duration of each period).
+
+Output:
+All generated figures are automatically saved in the directory specified by save_folder. These include:
+
+repartition_eveil.png – Pie chart of events during wakefulness.
+
+repartition_sommeil.png – Pie chart of events during sleep.
+
+ratios_par_electrode_et_periode.png – Bar chart of raw counts per electrode and state.
+
+ratios_normalisés.png – Ratio plot of normalized wake/sleep activity per electrode.
+
+Frequence_normalisé_par_electrode.png – Bar chart comparing normalized frequencies per electrode.
+
 
 ## Data Privacy and Security
 
