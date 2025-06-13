@@ -12,9 +12,9 @@ This repository contains scripts and tools for preprocessing and analyzing EEG d
 - [Project Description](#project-description)  
 - [Installation](#installation)  
 - [Usage](#usage) 
-    - [1. Preprocessing EEG EDF files] (#preprocess_edf)
-    - [2. Select events based on IED ratios] (#select_validate_ieds)
-    - [3. IED Event Analysis by Period and Electrode] (#ied_event_analysis)
+    - [1. Preprocessing EEG EDF files](#preprocess_edf)
+    - [2. Select events based on IED ratios](#select_validate_ieds)
+    - [3. IED Event Analysis by Period and Electrode](#ied_event_analysis)
 - [Data Privacy and Security](#data-privacy-and-security)  
 - [Repository Structure](#repository-structure)  
 
