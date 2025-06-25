@@ -1,3 +1,25 @@
+"""
+Script de prétraitement des fichiers EEG au format EDF.
+
+Ce script permet de nettoyer et filtrer des fichiers EDF (électroencéphalogrammes) en appliquant :
+- une sélection optionnelle des canaux d'intérêt,
+- un filtrage passe-bande (avec coupures basses et hautes fréquences paramétrables),
+- un filtre en peigne (notch) pour supprimer le bruit à une fréquence spécifique (par défaut 50 Hz).
+
+Il peut traiter un fichier EDF unique ou un dossier contenant plusieurs fichiers EDF, 
+et sauvegarde les fichiers nettoyés dans un dossier de sortie spécifié.
+
+Options disponibles :
+- Choix des canaux à conserver
+- Fréquences de filtrage ajustables
+- Possibilité de forcer l'écrasement des fichiers déjà traités
+- Option pour afficher un tracé des signaux nettoyés
+
+Usage typique en ligne de commande :
+(venv) PS C:\Users\boyer\github\ECOFEC> python -m scripts.preprocess_edf data/raw/edf_file --output_dir data/cleaned --plot  
+
+"""
+
 import os
 import argparse
 from preprocessing.edf_cleaning import clean_and_save_edf
