@@ -4,6 +4,8 @@ from scipy.io import savemat
 import os
 import sys
 
+print("Début script")
+
 def csv_to_mat(csv_path, mat_path):
     # Lire le CSV
     df = pd.read_csv(csv_path)
