@@ -1,10 +1,30 @@
+"""
+convert_csv_to_mat.py
+
+Ce script convertit un fichier .csv d'événements (extrait d'annotations EEG, comme des décharges épileptiformes interictales) 
+en un fichier .mat compatible avec Brainstorm. Il extrait les temps d'occurrence des événements (colonne 'Tmu') et les étiquettes
+de canal (colonne 'Electrode').
+
+Les temps sont convertis de microsecondes en secondes et sauvegardés dans un dictionnaire contenant :
+- 'onsets' : vecteur numpy de temps (en secondes)
+- 'descriptions' : vecteur numpy de chaînes de caractères (nom de canal associé)
+
+---------------------
+🔧 Utilisation (en ligne de commande) :
+python convert_csv_to_mat.py chemin/vers/fichier.csv chemin/vers/sortie.mat
+
+💡 Exemple :
+python convert_csv_to_mat.py C:/Users/boyer/github/ECOFEC/data/raw/csv_file/f29d_19ICA_FINAL.csv C:/Users/boyer/github/ECOFEC/data/raw/mat_file/f29d_19ICA_FINAL.mat
+---------------------
+
+Format attendu du fichier .csv : colonnes 'Tmu' (en µs) et 'Electrode'
+"""
+
 import pandas as pd
 import numpy as np
 from scipy.io import savemat
 import os
 import sys
-
-print("Début script")
 
 def csv_to_mat(csv_path, mat_path):
     # Lire le CSV
