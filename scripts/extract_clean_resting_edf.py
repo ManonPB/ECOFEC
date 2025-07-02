@@ -1,3 +1,34 @@
+"""
+extract_clean_resting_edf.py
+
+Ce script extrait automatiquement des segments EEG "propres" à partir d’un fichier .edf, en excluant les périodes contenant
+des événements pathologiques (par exemple, des pointes épileptiformes), définis dans un fichier .mat (contenant les onsets).
+Il permet aussi une **sélection interactive** des segments via affichage graphique avec validation manuelle (option `--visualize`).
+
+Le résultat est sauvegardé sous forme d’un nouveau fichier .edf ou .fif contenant une durée totale de données propres définie
+par l’utilisateur.
+
+---------------------
+🔧 Utilisation (en ligne de commande) :
+python extract_clean_resting_edf.py chemin/fichier.edf chemin/fichier.mat [OPTIONS]
+
+📌 Options disponibles :
+--output_path            Chemin du fichier de sortie (.edf ou .fif)
+--min_seg_sec            Durée minimale (en secondes) d’un segment propre [défaut: 2]
+--total_duration_sec     Durée totale souhaitée des données propres à extraire [défaut: 60]
+--visualize              Active l’affichage graphique et la sélection interactive (o/n)
+--wake_periods           Plage(s) temporelle(s) d’éveil, ex : --wake_periods "15 600 2248 2407"
+
+💡 Exemple simple sans visualisation :
+python extract_clean_resting_edf.py C:/dossier/fichier_clean.edf C:/dossier/fichier.mat --output_path C:/sortie/output.edf
+
+💡 Exemple avec visualisation interactive :
+python extract_clean_resting_edf.py C:/dossier/fichier_clean.edf C:/dossier/fichier.mat --output_path C:/sortie/output.edf --min_seg_sec 2 --total_duration_sec 60 --visualize
+
+⚠️ Le fichier .mat doit contenir un champ 'onsets' (vecteur de temps en secondes).
+---------------------
+"""
+
 import mne
 import numpy as np
 import scipy.io as sio
